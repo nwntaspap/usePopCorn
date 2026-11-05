@@ -44,7 +44,7 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 7.2rem;
-  padding: 0 clamp(1rem, 3.2rem, 5rem);
+  padding: 0 clamp(1rem, 2.5rem, 5rem);
   background-color: var(--color-primary);
   border-radius: 0.9rem;
 }
@@ -101,6 +101,7 @@ body {
 .search {
   border: none;
   padding: clamp(0.8rem, 1.5vw, 1.1rem) clamp(1.2rem, 3vw, 1.6rem);
+  margin-inline: 0.5rem;
   font-size: clamp(1.4rem, 2.5vw, 1.8rem);
   border-radius: 0.7rem;
   width: 40rem;
@@ -226,13 +227,13 @@ body {
 .summary h2 {
   text-transform: uppercase;
   font-size: 1.6rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 1rem;
 }
 
 .summary div {
   display: flex;
   align-items: center;
-  gap: 2.4rem;
+  gap: 2.2rem;
   font-size: 1.6rem;
   font-weight: 600;
 }
@@ -241,6 +242,8 @@ body {
   display: flex;
   align-items: center;
   gap: 0.8rem;
+  /* we dont want text to break in two lines */
+  white-space: nowrap;
 }
 
 /* ******* */
