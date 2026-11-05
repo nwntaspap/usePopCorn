@@ -1,6 +1,12 @@
 import { useState } from "react";
 import Main from "./components/Main/Main.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
+import SearchBar from "./components/Navbar/SearchBar.jsx";
+import NumResults from "./components/Navbar/NumResults.jsx";
+import Box from "./components/Main/Box.jsx";
+import MovieList from "./components/Main/MoviesList.jsx";
+import WatchedSummary from "./components/Main/WatchedSummary.jsx";
+import WatchedList from "./components/Main/WatchedList.jsx";
 
 const tempMovieData = [
   {
@@ -26,14 +32,51 @@ const tempMovieData = [
   },
 ];
 
+const tempWatchedData = [
+  {
+    imdbID: "tt1375666",
+    Title: "Inception",
+    Year: "2010",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
+    runtime: 148,
+    imdbRating: 8.8,
+    userRating: 10,
+  },
+  {
+    imdbID: "tt0088763",
+    Title: "Back to the Future",
+    Year: "1985",
+    Poster:
+      "https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    runtime: 116,
+    imdbRating: 8.5,
+    userRating: 9,
+  },
+];
+
 export default function App() {
   const [movies, setMovies] = useState(tempMovieData);
+  const [watched, setWatched] = useState(tempWatchedData);
 
   return (
     <>
-      <Navbar movies={movies} />
+      <Navbar>
+        <SearchBar />
+        <NumResults movies={movies} />
+      </Navbar>
 
-      <Main movies={movies} />
+      <Main>
+        <Box>
+          <MovieList movies={movies} />
+        </Box>
+        <Box>
+          <>
+            <WatchedSummary watched={watched} />
+            <WatchedList watched={watched} />
+          </>
+        </Box>
+      </Main>
     </>
   );
 }

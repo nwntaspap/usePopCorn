@@ -1,8 +1,7 @@
 import { useState } from "react";
-import MoviesList from "./MoviesList.jsx";
 import ToggleBoxButton from "./ToggleBoxButton.jsx";
 
-function ListBox({ movies }) {
+function Box({ children }) {
   const [isOpen, setIsOpen] = useState(true);
 
   function handleToggleBox() {
@@ -12,9 +11,9 @@ function ListBox({ movies }) {
   return (
     <div className="box">
       <ToggleBoxButton isOpen={isOpen} onToggle={handleToggleBox} />
-      {isOpen && <MoviesList movies={movies} />}
+      {isOpen && children}
     </div>
   );
 }
 
-export default ListBox;
+export default Box;
